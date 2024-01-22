@@ -36,7 +36,6 @@ app.get("/api/:date", function (req, res) {
   }
 });
 
-
 // Example endpoint
 app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
