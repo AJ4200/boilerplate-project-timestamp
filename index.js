@@ -1,4 +1,3 @@
-// index.js
 var express = require("express");
 var app = express();
 
@@ -11,8 +10,9 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/api/timestamp", function (req, res) {
-  const { date } = req.query;
+// Updated route with :date parameter
+app.get("/api/:date", function (req, res) {
+  const { date } = req.params;
 
   if (!date) {
     // If no date parameter is provided, return the current time
@@ -36,7 +36,6 @@ app.get("/api/timestamp", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
-
 
 var listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
