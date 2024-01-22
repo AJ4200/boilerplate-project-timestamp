@@ -25,12 +25,17 @@ app.get("/api/:date", function (req, res) {
     if (!isNaN(timestamp)) {
       // If the date is valid, return the timestamp and UTC time
       res.json({ unix: timestamp, utc: new Date(timestamp).toUTCString() });
+    } else if (!isNaN(Number(date))) {
+      // If the date is a Unix timestamp, convert and return the result
+      const timestamp = Number(date);
+      res.json({ unix: timestamp, utc: new Date(timestamp).toUTCString() });
     } else {
       // If the date is invalid, return an error message
       res.json({ error: "Invalid Date" });
     }
   }
 });
+
 
 // Example endpoint
 app.get("/api/hello", function (req, res) {
