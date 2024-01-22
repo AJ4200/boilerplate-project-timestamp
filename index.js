@@ -11,7 +11,7 @@ app.get("/", function (req, res) {
 });
 
 // Updated route with :date parameter
-app.get("/api/:date", function (req, res) {
+app.get("/api/:date?", function (req, res) {
   const { date } = req.params;
 
   if (!date) {
